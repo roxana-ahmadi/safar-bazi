@@ -5,5 +5,6 @@
   "tabWidth": 2,
   "printWidth": 120,
   "proseWrap": "preserve",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "editor.formatOnSave": true
 }

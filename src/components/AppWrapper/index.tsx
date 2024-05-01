@@ -1,9 +1,13 @@
 "use client";
 
-import { Provider } from "react-redux";
+import { StoreProvider } from "../StoreProvider/StoreProvider";
 import { IAppWrapper } from "./types";
-import { store } from "@/src/store";
+import { ConfigProvider } from "antd";
 
 export default function AppWrapper({ children }: IAppWrapper) {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <StoreProvider>
+      <ConfigProvider direction="rtl">{children}</ConfigProvider>
+    </StoreProvider>
+  );
 }

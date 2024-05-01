@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { getProducts } from "../apis/getProducts";
+import HomePageTable from "../components/HomePageTable";
 
 export default async function Home() {
   const productsPromise = getProducts();
@@ -7,10 +8,7 @@ export default async function Home() {
   return (
     <main>
       <Suspense fallback>
-        {/* <ProductsTable promise={productsPromise} />
-        {products.map(product => (
-          <div key={product.id}>{product.title}</div>
-        ))} */}
+        <HomePageTable promise={productsPromise} />
       </Suspense>
     </main>
   );

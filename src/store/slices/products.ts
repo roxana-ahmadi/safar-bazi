@@ -9,7 +9,7 @@ const initialState: IProductState = {
 };
 
 export const productSlice = createSlice({
-  name: "product",
+  name: "products",
   initialState,
   reducers: {
     setProductData: (state, action: PayloadAction<IProduct[]>) => {
