@@ -20,3 +20,11 @@ export interface IProduct {
 export interface IProductState {
   data: IProduct[];
 }
+
+export interface IGetProductsParams {
+  title?: string;
+  creationAtMin?: Date;
+  creationAtMax?: Date;
+  offset?: number;
+  limit?: number;
+}

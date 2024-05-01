@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IProduct, IProductState } from "./types";
+import { IGetProductsParams, IProduct, IProductState } from "./types";
 import { AppDispatch } from "..";
 
 const initialState: IProductState = {
@@ -20,10 +20,20 @@ export const productSlice = createSlice({
 
 export const { setProductData } = productSlice.actions;
 
-export const getProducts = () => async (dispatch: AppDispatch) => {
-  const response = await axios.get<IProduct[]>("https://api.escuelajs.co/api/v1/products");
+export const getProducts =
+  ({ creationAtMax, creationAtMin, limit, offset, title }: IGetProductsParams) =>
+  async (dispatch: AppDispatch) => {
+    const { data } = await axios.get<IProduct[]>("https://api.escuelajs.co/api/v1/products", {
+      params: {
+        title,
+        offset,
+        limit,
+        creationAt_min: creationAtMin?.toISOString(),
+        creationAt_max: creationAtMax?.toISOString(),
+      },
+    });
 
-  console.log(response);
-};
+    dispatch(setProductData(data));
+  };
 
 export default productSlice.reducer;

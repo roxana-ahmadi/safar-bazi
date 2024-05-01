@@ -1,5 +1,6 @@
 import { IProduct } from "@/src/store/slices/types";
 import { ColumnsType } from "antd/es/table";
+import { ITableParams } from "./types";
 
 export const tableColumns: ColumnsType<IProduct> = [
   {
@@ -50,3 +51,9 @@ export const tableColumns: ColumnsType<IProduct> = [
     },
   },
 ];
+
+export const getRandomuserParams = (params: ITableParams) => ({
+  results: params.pagination?.pageSize,
+  page: params.pagination?.current,
+  ...params,
+});

@@ -1,9 +1,9 @@
 import { Suspense } from "react";
-import { getProducts } from "../apis/getProducts";
+import { getInitialProducts } from "../apis/getInitialProducts";
 import HomePageTable from "../components/HomePageTable";
 
 export default async function Home() {
-  const productsPromise = getProducts();
+  const productsPromise = getInitialProducts();
 
   return (
     <main>
